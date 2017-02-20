@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {Auth} from './auth.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +17,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ AUTH_PROVIDERS, Auth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
