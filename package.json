@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Mitzsche/web-instructions/issues"
   },
+  "dependencies": {
+  	"express": "*",
+  	"body-parser": "*"
+  },
   "homepage": "https://github.com/Mitzsche/web-instructions#readme"
 }
