@@ -7,6 +7,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li (click)="ChangeLang('ru')">{{ 'Languages.Ru' | translate }}</li>
         <li (click)="ChangeLang('en')">{{ 'Languages.En' | translate }}</li>
+        <li (click)="ChangeTheme('darkly')">black</li>
+        <li (click)="ChangeTheme('journal')">white</li>
         <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">{{ 'login' | translate }}</a></li>
         <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">{{ 'logout' | translate }}</a></li>
       </ul>

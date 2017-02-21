@@ -16,8 +16,10 @@
     "url": "https://github.com/Mitzsche/web-instructions/issues"
   },
   "dependencies": {
-  	"express": "*",
-  	"body-parser": "*"
+    "body-parser": "*",
+    "express": "*",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.2"
   },
   "homepage": "https://github.com/Mitzsche/web-instructions#readme"
 }
