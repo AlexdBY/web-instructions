@@ -5,8 +5,10 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</a></li>
-        <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</a></li>
+        <li (click)="ChangeLang('ru')">{{ 'Languages.Ru' | translate }}</li>
+        <li (click)="ChangeLang('en')">{{ 'Languages.En' | translate }}</li>
+        <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">{{ 'login' | translate }}</a></li>
+        <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">{{ 'logout' | translate }}</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

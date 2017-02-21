@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Auth } from './auth.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,17 @@ import { Auth } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private auth: Auth) {
 
+  constructor(private auth: Auth, private translate:TranslateService) {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang('en');
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
   }
+
+  ChangeLang(lang:string)
+  {
+    this.translate.use(lang);
+  }
+  
 }

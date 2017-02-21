@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {Auth} from './auth.service';
 
+import { TranslateModule, TranslatePipe } from 'ng2-translate';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,8 @@ import {Auth} from './auth.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    TranslateModule.forRoot()
   ],
   providers: [ AUTH_PROVIDERS, Auth],
   bootstrap: [AppComponent]

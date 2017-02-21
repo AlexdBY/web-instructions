@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 // Get our API routes
 const api = require('./routes/api');
 
+const rsc = require('./i18n');
+
 const app = express();
 
 
@@ -19,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // Set our api routes
 app.use('/api', api);
+
+app.use('/i18n',rsc);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
