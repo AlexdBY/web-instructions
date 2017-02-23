@@ -20,6 +20,7 @@ export class AppComponent {
   {
     this.translate.use(lang);
   }
+  
   ChangeTheme(theme:string)
   {
     let styleUrl = document.getElementById('style');

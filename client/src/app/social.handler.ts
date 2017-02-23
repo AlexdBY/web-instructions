@@ -44,7 +44,7 @@ class VKHandler implements ISocialHandler {
             imageUrl: data.picture,
             link: data.link,
             role: null,
-            social: 'facebook'
+            social: 'vkontakte'
         }
     }
 
