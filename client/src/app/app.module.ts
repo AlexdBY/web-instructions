@@ -9,16 +9,23 @@ import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {Auth} from './auth.service';
 
 import { TranslateModule, TranslatePipe } from 'ng2-translate';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {routing} from "./app.routing";
+import { TopuserstabComponent } from './topuserstab/topuserstab.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent,
+    TopuserstabComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    routing
   ],
   providers: [ AUTH_PROVIDERS, Auth],
   bootstrap: [AppComponent]
