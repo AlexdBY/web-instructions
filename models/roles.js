@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    tableName: 'roles'
+    tableName: 'roles',
+    timestamps: false
   });
 };

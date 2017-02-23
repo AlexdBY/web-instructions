@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-    tableName: 'instructionstags'
+    tableName: 'instructionstags',
+    timestamps: false
   });
 };
