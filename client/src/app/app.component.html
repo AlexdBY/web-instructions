@@ -28,10 +28,10 @@
         <li><a href="#" (click)="auth.login()" *ngIf="!auth.authenticated()">{{ 'login' | translate }}</a></li>
         <li><a href="#" (click)="auth.logout()" *ngIf="auth.authenticated()">{{ 'logout' | translate }}</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
 </nav>
 
 <div>
   <router-outlet></router-outlet>
-</div><!-- /.container -->
+</div>

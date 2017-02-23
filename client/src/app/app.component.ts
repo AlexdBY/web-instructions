@@ -14,8 +14,6 @@ export class AppComponent {
     translate.setDefaultLang('en');
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
-    
-    //console.log(styleUrl.attributes.getNamedItem('href'));
   }
 
   ChangeLang(lang:string)
