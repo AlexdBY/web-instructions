@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Http } from '@angular/http';
-import { Social } from './social.handler';
+import { Social } from './models/social.handler';
 
 declare var Auth0Lock: any;
 
@@ -17,10 +17,13 @@ export class Auth {
           throw new Error(error);
         }
         localStorage.setItem('id_token', authResult.idToken);
-        //localStorage.setItem('profile', JSON.stringify(profile));
         let social = new Social;
         var user = social.createUserModelFromAuthResult(profile);
-        http.post('api/insertUserData', user).subscribe();
+        http.post('api/users/auth', user).subscribe(res => { 
+          user.role = res['_body']; 
+          localStorage.setItem('profile', JSON.stringify(user));
+          console.log(user); 
+        });
       });
     });
   }

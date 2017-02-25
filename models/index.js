@@ -30,6 +30,9 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+db['users'].belongsTo(db['roles']);
+db['users'].belongsTo(db['socials']);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
