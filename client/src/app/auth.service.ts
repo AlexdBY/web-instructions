@@ -19,8 +19,10 @@ export class Auth {
         localStorage.setItem('id_token', authResult.idToken);
         let social = new Social;
         var user = social.createUserModelFromAuthResult(profile);
-        http.post('api/users/auth', user).subscribe(res => { 
-          user.role = res['_body']; 
+        http.post('users/auth', user).subscribe(res => { 
+          var responceResult = res.json();
+          user.authId = responceResult.id;
+          user.role = responceResult.role; 
           localStorage.setItem('profile', JSON.stringify(user));
           console.log(user); 
         });
@@ -29,18 +31,14 @@ export class Auth {
   }
 
   public login() {
-    // Call the show method to display the widget.
     this.lock.show();
   }
 
   public authenticated() {
-    // Check if there's an unexpired JWT
-    // This searches for an item in localStorage with key == 'id_token'
     return tokenNotExpired();
   }
 
   public logout() {
-    // Remove token from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
   }

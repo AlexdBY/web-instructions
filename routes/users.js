@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 const models = require('../models');
 
-router.post('/users/auth', (req, res) => {
+router.post('/auth', (req, res) => {
     var role, social;
+    var userData = {};
     models.roles.findOne({ where: { name: 'user' } })
+
     .then(result =>{
         role = result;
         return models.socials.findOne({ where: { name: req.body.social } });
     })
+
     .then(result => {
         social = result;
         return models.users.findOrCreate({
@@ -22,13 +25,15 @@ router.post('/users/auth', (req, res) => {
                 }
             })
     })
+
     .then(result => {
-        //console.log(result[1]);
+        userData.id = result[0].dataValues.id;
         return models.roles.findOne({where: { id: result[0].dataValues.roleId }});
-       
     })
+
     .then(result =>{
-         res.status(200).send(result.name);
+        userData.role = result.name;
+        res.status(200).json(userData);
     });
 });
 

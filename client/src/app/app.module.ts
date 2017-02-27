@@ -12,13 +12,17 @@ import { TranslateModule, TranslatePipe } from 'ng2-translate';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {routing} from "./app.routing";
 import { TopuserstabComponent } from './topuserstab/topuserstab.component';
+import { ProfileComponent } from './profile/profile.component';
+import { InstructionCreatorComponent } from './instruction-creator/instruction-creator.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    TopuserstabComponent
+    TopuserstabComponent,
+    ProfileComponent,
+    InstructionCreatorComponent
   ],
   imports: [
     BrowserModule,

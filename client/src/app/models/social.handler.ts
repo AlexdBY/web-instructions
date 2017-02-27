@@ -40,9 +40,8 @@ class VKHandler implements ISocialHandler {
         return user = {
             username: data.nickname,
             createdAt: date.substring(0,10),
-            authId: data.clientID,
+            authId: null,
             imageUrl: data.picture,
-            link: data.link,
             role: null,
             social: 'vkontakte'
         }
@@ -58,9 +57,8 @@ class FbHandler implements ISocialHandler {
         return user = {
             username: data.nickname,
             createdAt: date.substring(0,10),
-            authId: data.clientID,
+            authId: null,
             imageUrl: data.picture_large,
-            link: data.link,
             role: null,
             social: 'facebook'
         }
@@ -76,9 +74,8 @@ class TwitterHandler implements ISocialHandler {
         return user = {
             username: data.nickname,
             createdAt: date.substring(0,10),
-            authId: data.clientID,
+            authId: null,
             imageUrl: data.picture,
-            link: 'https://twitter.com/'+data.nickname,
             role: null,
             social: 'twitter'
         }

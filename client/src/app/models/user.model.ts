@@ -4,6 +4,5 @@ export class User{
     role: string;
     social:string;
     createdAt:string;
-    authId: string;
-    link: string;
+    authId: number;
 }
