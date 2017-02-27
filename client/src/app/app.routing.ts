@@ -4,14 +4,16 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {WelcomeComponent} from "./welcome/welcome.component";
-import {TopuserstabComponent} from "./topuserstab/topuserstab.component";
+import {TopInstructionsComponent} from "./top-instructions/top-instructions.component";
+import {LastInstructionsComponent} from "./last-instructions/last-instructions.component";
 
 const appRoutes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
     children: [
-      {path: '', component: TopuserstabComponent}
+      {path: '', component: TopInstructionsComponent},
+      {path: 'last', component: LastInstructionsComponent}
     ]
   }
 ];
