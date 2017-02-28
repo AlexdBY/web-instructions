@@ -9,11 +9,9 @@ import { User } from '../models/user.model';
 })
 export class ProfileComponent implements OnInit {
   
-  user:User;
   
   constructor(auth: Auth) 
   { 
-    this.user = JSON.parse(localStorage.getItem('profile'));
   }
 
   ngOnInit() {

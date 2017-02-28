@@ -18,6 +18,8 @@
   "dependencies": {
     "body-parser": "*",
     "express": "*",
+    "jsonwebtoken": "^7.3.0",
+    "jwt-express": "^1.1.0",
     "mysql": "^2.13.0",
     "sequelize": "^3.30.2"
   },
