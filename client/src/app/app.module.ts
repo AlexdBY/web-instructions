@@ -11,6 +11,8 @@ import {Auth} from './auth.service';
 import { TranslateModule, TranslatePipe } from 'ng2-translate';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {routing} from "./app.routing";
+import { ProfileComponent } from './profile/profile.component';
+import { InstructionCreatorComponent } from './instruction-creator/instruction-creator.component';
 import { TopInstructionsComponent } from './top-instructions/top-instructions.component';
 import { LastInstructionsComponent } from './last-instructions/last-instructions.component';
 
@@ -19,6 +21,8 @@ import { LastInstructionsComponent } from './last-instructions/last-instructions
   declarations: [
     AppComponent,
     WelcomeComponent,
+    ProfileComponent,
+    InstructionCreatorComponent,
     TopInstructionsComponent,
     LastInstructionsComponent
   ],
