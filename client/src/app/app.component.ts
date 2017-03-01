@@ -32,7 +32,6 @@ export class AppComponent {
     if (localStorage.getItem('id_token')) {
       this.authHttp.get('api/userinfo').subscribe(res => {
         this.user = res.json();
-        console.log(this.user);
       })
     }
   }
@@ -48,7 +47,6 @@ export class AppComponent {
         this.user = social.createUserModelFromAuthResult(profile);
         this.authHttp.post('api/login', this.user).subscribe(res => {
           this.user.role = res.json().role;
-          console.log(this.user);
         });
       });
     });

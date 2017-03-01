@@ -7,6 +7,7 @@ const options = require('../config/jwt-options');
 
  router.post('/login',jwt(options), controllers.login);
  router.get('/userinfo',jwt(options), controllers.getAuthInfo);
+ router.get('/profile/:username', controllers.getPage);
 
 
 

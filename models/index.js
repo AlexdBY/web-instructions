@@ -32,6 +32,9 @@ Object.keys(db).forEach(function(modelName) {
 
 db['users'].belongsTo(db['roles']);
 db['users'].belongsTo(db['socials']);
+db['instructions'].belongsTo(db['categories']);
+db['instructions'].belongsTo(db['users']);
+db['users'].hasMany(db['instructions']);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

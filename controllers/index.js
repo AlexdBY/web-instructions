@@ -45,25 +45,49 @@ module.exports.login = function login(req, res) {
 module.exports.getAuthInfo = function (req, res) {
     let token = fromHeaderOrQuerystring(req);
     let userObject;
-    models.users.findOne({ where: { jwt: token } })
+    models.users.findOne({ where: { jwt: token }, include: [models.roles, models.socials] })
         .then(result => {
             userObject = {
                 username: result.dataValues.username,
                 imageUrl: result.dataValues.imageUrl,
                 createdAt: result.dataValues.createdAt,
-                authId: null
+                authId: null,
+                social: result.dataValues.social.dataValues.name,
+                role: result.dataValues.role.dataValues.name
             }
-            models.socials.findOne({ where: { id: result.dataValues.socialId } })
-                .then(socialResult => {
-                    userObject.social = socialResult.name;
-                    models.roles.findOne({ where: { id: result.dataValues.roleId } })
-                        .then(roleResult => {
-                            userObject.role = roleResult.name;
-                            res.status(200).json(userObject);
-                        })
-                })
+            res.status(200).json(userObject);
         });
 
+}
+
+
+module.exports.getPage = function (req, res) {
+    let token = fromHeaderOrQuerystring(req);
+    let username = req.params.username;
+    let userData = {};
+    userData.instructions = [];
+    models.users.findOne({
+        where: { username: username },
+        include: [{ model: models.instructions, include: [models.categories] }]
+    })
+        .then(result => {
+            userData.username = result.username;
+            userData.imageUrl = result.imageUrl;
+            if (token !== null && token == result.jwt) {
+                userData.isYourAccount = true;
+            }
+            else {
+                userData.isYourAccount = false;
+            }
+            result.instructions.forEach(function (item, i) {
+                userData.instructions.push({
+                    name: item.dataValues.name,
+                    createdAt: item.dataValues.createdAt,
+                    category: item.category.name
+                })
+            })
+            res.status(200).json(userData);
+        });
 }
 
 
@@ -75,3 +99,40 @@ function fromHeaderOrQuerystring(req) {
     }
     return null;
 }
+
+
+        // .then(userResult => {
+        //     userData.username = userResult.dataValues.username;
+        //     userData.imageUrl = userResult.dataValues.imageUrl;
+        //     if (token !== null && token == userResult.dataValues.jwt) {
+        //         userData.isYourAccount = true;
+        //     }
+        //     else {
+        //         userData.isYourAccount = false;
+        //     }
+        //     return models.instructions.findAll({ where: { userId: userResult.dataValues.id }, include:[models.categories] });
+        // })
+        // .then(instructionsResult => {
+        //     // console.log(instructionsResult);
+        //     instructionsResult.forEach(function (item, i, instructionsResult) {
+        //         userData.instructions.push({
+        //             name: item.dataValues.name,
+        //             createdAt: item.dataValues.createdAt,
+        //         })
+        //     });
+        //     //console.log(userData.instructions);
+        // });
+
+    // userData.instructions = [];
+    // models.users.findOne({ where: { username: username } },{include:[models.instructions]})
+    //     .then(userResult => {
+    //         userData = userResult.dataValues;
+    //         console.log(userResult);
+    //         return models.instructions.findAll({ where: { userId: userData.id } })
+    //     .then(instructionsResult => {
+    //         // instructionsResult.forEach(function(value){
+    //         //     userData.instructions.push(value.dataValues);
+    //         // })
+    //         //console.log(instructionsResult);
+    //     });
+    //     });
