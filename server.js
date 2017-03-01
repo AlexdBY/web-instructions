@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
-const users = require('./routes/users');
+const users = require('./routes/api');
 
 const rsc = require('./i18n');
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
-app.use('/users', users);
+app.use('/api', users);
 app.use('/i18n',rsc);
 
 app.get('*', (req, res) => {

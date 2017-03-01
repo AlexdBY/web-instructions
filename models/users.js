@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('users', {
+  return User = sequelize.define('users', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -35,6 +35,10 @@ module.exports = function(sequelize, DataTypes) {
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true
+    },
+    jwt:{
+      type:DataTypes.STRING,
+      allowNull:true
     }
   }, {
     tableName: 'users',

@@ -1,2 +1,4 @@
-<h1>{{ user.username }}</h1>
+<h1>{{ page?.username }}</h1>
+<img src="page.imageUrl">
+ <span class="form-control" *ngIf="page?.isYourPage">It is your account</span>
 <router-outlet></router-outlet>

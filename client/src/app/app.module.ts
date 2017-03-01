@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {Auth} from './auth.service';
+import { UserService } from './user.service';
+
+import {routing} from "./app.routing";
 
 import { TranslateModule, TranslatePipe } from 'ng2-translate';
 import { WelcomeComponent } from './welcome/welcome.component';
-import {routing} from "./app.routing";
 import { ProfileComponent } from './profile/profile.component';
 import { InstructionCreatorComponent } from './instruction-creator/instruction-creator.component';
 import { TopInstructionsComponent } from './top-instructions/top-instructions.component';
@@ -33,7 +35,7 @@ import { LastInstructionsComponent } from './last-instructions/last-instructions
     TranslateModule.forRoot(),
     routing
   ],
-  providers: [ AUTH_PROVIDERS, Auth],
+  providers: [ AUTH_PROVIDERS, Auth, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
