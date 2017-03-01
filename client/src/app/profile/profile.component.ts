@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../models/user.model';
-import { AuthHttp } from 'angular2-jwt';
 import { Page } from '../models/page.model';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +9,9 @@ import { Page } from '../models/page.model';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
   page:Page;
 
-  constructor(private route: ActivatedRoute, private authHttp: AuthHttp) {
+  constructor(private route: ActivatedRoute, private http: Http) {
     route.url.subscribe(urlSegments => {
         this.getPageData(urlSegments[0].path);
     });
@@ -21,9 +19,12 @@ export class ProfileComponent implements OnInit {
   }
 
   private getPageData(urlSegment: string) {
-    this.authHttp.get('api/profile/'+urlSegment).subscribe(res => {
-        this.page = res.json();
-        console.log(this.page);
+    let token =localStorage.getItem('id_token');
+    let headers = new Headers({ 'authorization': 'Bearer ' + token});
+    let options = new RequestOptions({ headers: headers });
+    this.http.get('api/profile/'+urlSegment, options).subscribe(res => {
+      this.page = res.json();
+      console.log(this.page);
     });
   }
 

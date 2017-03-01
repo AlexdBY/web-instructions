@@ -36,7 +36,7 @@ module.exports.login = function login(req, res) {
             }
             else {
                 res.status(200).json({
-                    "role": result.dataValues.role.dataValues.name
+                    "role": 'user'
                 });
             }
         });

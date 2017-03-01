@@ -1,10 +1,11 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {WelcomeComponent} from "./welcome/welcome.component";
+import { WelcomeComponent } from "./welcome/welcome.component";
 import { ProfileComponent } from './profile/profile.component';
 import { InstructionCreatorComponent } from './instruction-creator/instruction-creator.component';
 import { TopInstructionsComponent } from './top-instructions/top-instructions.component';
 import { LastInstructionsComponent } from './last-instructions/last-instructions.component';
+
 
 const appRoutes: Routes = [
   {
@@ -17,10 +18,11 @@ const appRoutes: Routes = [
   },
   {
     path:':id',
-    component:ProfileComponent,
-    children:[
-      {path:'create', component:InstructionCreatorComponent}
-    ]
+    component:ProfileComponent
+  },
+  {
+    path: ':id/constructor',
+    component: InstructionCreatorComponent
   }
 ];
 

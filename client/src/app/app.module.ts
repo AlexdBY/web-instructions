@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InstructionCreatorComponent } from './instruction-creator/instruction-creator.component';
 import { TopInstructionsComponent } from './top-instructions/top-instructions.component';
 import { LastInstructionsComponent } from './last-instructions/last-instructions.component';
+import { InstructionConstructorComponent } from './instruction-constructor/instruction-constructor.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LastInstructionsComponent } from './last-instructions/last-instructions
     ProfileComponent,
     InstructionCreatorComponent,
     TopInstructionsComponent,
-    LastInstructionsComponent
+    LastInstructionsComponent,
+    InstructionConstructorComponent
   ],
   imports: [
     BrowserModule,

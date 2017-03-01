@@ -1,4 +1,22 @@
-<h1>{{ page?.username }}</h1>
-<img src="page.imageUrl">
- <span class="form-control" *ngIf="page?.isYourPage">It is your account</span>
-<router-outlet></router-outlet>
+<section class="container">
+    <article>
+      <img src="{{ page?.imageUrl }}" class="img-circle" style="display: inline-block">
+      <h3 style="display: inline-block">{{ page?.username }}</h3>
+    </article>
+  <article class="text-center">
+      <div class="col-md-3"  *ngIf="page?.isYourAccount">
+        <span class="glyphicon glyphicon-plus-sign add-button" aria-hidden="true"></span>
+        <h4>Добавить инструкцию</h4>
+      </div>
+      <div class="col-md-3" *ngFor="let instruction of page?.instructions">
+        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+        <h4>{{ page?.username }}</h4>
+        <p>{{instruction.name}}</p>
+        <p><span style="color: forestgreen">160 <span class="glyphicon glyphicon-thumbs-up" style="margin-right: 10px;"></span></span> <span style="color: firebrick">4 <span class="glyphicon glyphicon-thumbs-down"></span></span></p>
+        <p style="display: inline-block"><a class="btn btn-primary" href="#" role="button">View &raquo;</a></p>
+        <p *ngIf="page?.isYourAccount" style="display: inline-block"><a class="btn btn-primary" href="/constructor" role="button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></p>
+      </div>
+  </article>
+</section>
+
+<!--<span class="form-control" *ngIf="page?.isYourPage">It is your account</span>-->
